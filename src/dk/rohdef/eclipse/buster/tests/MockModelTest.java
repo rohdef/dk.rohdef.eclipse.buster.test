@@ -73,13 +73,15 @@ public class MockModelTest {
 		TestSuite suite1 = suites.get(0);
 		TestSuite suite2 = suites.get(1);
 		
+		assertEquals("Suite1", suite1.getName());
 		assertEquals("Suite 1 Test count", 2, suite1.getTests());
-		assertEquals("Suite 1 Failure count", 0, suite1.getTests());
-		assertEquals("Suite 1 Error count", 0, suite1.getTests());
+		assertEquals("Suite 1 Failure count", 0, suite1.getFailures());
+		assertEquals("Suite 1 Error count", 0, suite1.getErrors());
 		
+		assertEquals("Suite2", suite2.getName());
 		assertEquals("Suite 2 Test count", 6, suite2.getTests());
-		assertEquals("Suite 2 Failure count", 2, suite2.getTests());
-		assertEquals("Suite 2 Error count", 1, suite2.getTests());
+		assertEquals("Suite 2 Failure count", 2, suite2.getFailures());
+		assertEquals("Suite 2 Error count", 1, suite2.getErrors());
 	}
 	
 	@Test
