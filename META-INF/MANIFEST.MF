@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Test
+Bundle-SymbolicName: dk.rohdef.eclipse.buster.test
+Bundle-Version: 1.0.0
+Bundle-Vendor: Rohde Fischer
+Fragment-Host: dk.rohdef.eclipse.buster;bundle-version="1.0.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Require-Bundle: org.junit
