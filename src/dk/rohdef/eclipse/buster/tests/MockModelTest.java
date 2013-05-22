@@ -104,9 +104,9 @@ public class MockModelTest {
 		assertEquals(6, testCases.size());
 		assertEquals("Normal success", testCases.get(0).getName());
 		assertEquals("Another success", testCases.get(1).getName());
-		assertEquals("Simple failure", testCases.get(1).getName());
-		assertEquals("Auch an error", testCases.get(1).getName());
-		assertEquals("Async timeout", testCases.get(1).getName());
-		assertEquals("Async success", testCases.get(1).getName());
+		assertEquals("Simple failure", testCases.get(2).getName());
+		assertEquals("Auch an error", testCases.get(3).getName());
+		assertEquals("Async timeout", testCases.get(4).getName());
+		assertEquals("Async success", testCases.get(5).getName());
 	}
 }
