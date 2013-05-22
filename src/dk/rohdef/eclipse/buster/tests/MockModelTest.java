@@ -98,7 +98,7 @@ public class MockModelTest {
 	@Test
 	public void testGetSuitesSuite2() {
 		TestSuite suite2 = suites.get(1);
-		assertEquals("Suite1", suite2.getName());
+		assertEquals("Suite2", suite2.getName());
 		
 		List<TestCase> testCases = suite2.getTestCases();
 		assertEquals(6, testCases.size());
