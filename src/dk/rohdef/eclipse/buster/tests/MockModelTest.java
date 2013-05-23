@@ -7,6 +7,7 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
+import dk.rohdef.eclipse.buster.models.Failure;
 import dk.rohdef.eclipse.buster.models.MockModel;
 import dk.rohdef.eclipse.buster.models.TestCase;
 import dk.rohdef.eclipse.buster.models.TestSuite;
@@ -152,5 +153,27 @@ public class MockModelTest {
 		assertEquals("Chrome 27.0.1453.81, Linux.Some dummy browser test", failureTest.getClassName());
 		assertEquals(0.0, failureTest.getTime(), 0.01);
 		assertNotNull(failureTest.getFailure());
+	}
+	
+	@Test
+	public void testGetSuitesFailures() {
+		TestSuite suite2 = suites.get(1);
+		
+		Failure failure;
+		failure = suite2.getTestCases().get(2).getFailure();
+		assertEquals("AssertionError", failure.getType());
+		assertEquals("[expect.toBe] true expected to be the same object as false", failure.getMessage());
+		assertTrue(failure.getText().length()>0);
+		
+		failure = suite2.getTestCases().get(3).getFailure();
+		assertEquals("ReferenceError", failure.getType());
+		assertEquals("undefined1 is not defined", failure.getMessage());
+		assertTrue(failure.getText().length()>0);
+		
+		failure = suite2.getTestCases().get(4).getFailure();
+		assertEquals("TimeoutError", failure.getType());
+		assertEquals("test function timed out after 250ms", failure.getMessage());
+		assertEquals(0, failure.getText().length());
+		assertEquals("", failure.getText());
 	}
 }
