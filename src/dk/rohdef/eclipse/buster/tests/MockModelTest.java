@@ -109,4 +109,48 @@ public class MockModelTest {
 		assertEquals("Async timeout", testCases.get(4).getName());
 		assertEquals("Async success", testCases.get(5).getName());
 	}
+	
+	@Test
+	public void testGetSuitesTestCaseSuccesses() {
+		// Names is already being tested in testGetSuitesSuite2
+		TestSuite suite2 = suites.get(1);
+		
+		TestCase successTest;
+		successTest = suite2.getTestCases().get(0);
+		assertEquals("Chrome 27.0.1453.81, Linux.Some dummy browser test", successTest.getClassName());
+		assertEquals(0.269, successTest.getTime(), 0.01);
+		assertNull(successTest.getFailure());
+		
+		successTest = suite2.getTestCases().get(1);
+		assertEquals("Chrome 27.0.1453.81, Linux.Some dummy browser test", successTest.getClassName());
+		assertEquals(0.0, successTest.getTime(), 0.01);
+		assertNull(successTest.getFailure());
+		
+		successTest = suite2.getTestCases().get(5);
+		assertEquals("Chrome 27.0.1453.81, Linux.Some dummy browser test", successTest.getClassName());
+		assertEquals(0.0, successTest.getTime(), 0.01);
+		assertNull(successTest.getFailure());
+	}
+	
+	@Test
+	public void testGetSuitesTestCaseFailures() {
+		// Names is already being tested in testGetSuitesSuite2
+		TestSuite suite2 = suites.get(1);
+		
+		TestCase failureTest;
+		failureTest = suite2.getTestCases().get(2);
+		assertEquals("Chrome 27.0.1453.81, Linux.Some dummy browser test", failureTest.getClassName());
+		assertEquals(0.0, failureTest.getTime(), 0.01);
+		assertNotNull(failureTest.getFailure());
+		
+		failureTest = suite2.getTestCases().get(3);
+		assertEquals("Chrome 27.0.1453.81, Linux.Some dummy browser test", failureTest.getClassName());
+		assertEquals(0.0, failureTest.getTime(), 0.01);
+		assertNotNull(failureTest.getFailure());
+		
+		failureTest = suite2.getTestCases().get(4);
+		assertEquals("Chrome 27.0.1453.81, Linux.Some dummy browser test", failureTest.getClassName());
+		assertEquals(0.0, failureTest.getTime(), 0.01);
+		assertNotNull(failureTest.getFailure());
+	}
 }
