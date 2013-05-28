@@ -14,7 +14,7 @@ import dk.rohdef.eclipse.buster.models.TestCase;
 import dk.rohdef.eclipse.buster.models.TestSuite;
 
 public class MockModelTest {
-	private String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\r\n" +
+	static final String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\r\n" +
 			"<testsuites>\r\n" +
 			"    <testsuite errors=\"0\" tests=\"2\" time=\"0.001\" failures=\"0\" name=\"Suite1\">\r\n" +
 			"        <testcase time=\"0.011\" classname=\"Chrome 27.0.1453.81, Linux.Some dummy browser test\" name=\"Normal success\"/>\r\n" +
