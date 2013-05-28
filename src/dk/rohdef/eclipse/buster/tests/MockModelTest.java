@@ -9,6 +9,7 @@ import org.junit.Test;
 
 import dk.rohdef.eclipse.buster.models.Failure;
 import dk.rohdef.eclipse.buster.models.MockModel;
+import dk.rohdef.eclipse.buster.models.RootTestSuite;
 import dk.rohdef.eclipse.buster.models.TestCase;
 import dk.rohdef.eclipse.buster.models.TestSuite;
 
@@ -59,12 +60,21 @@ public class MockModelTest {
 			"    </testsuite>\r\n" +
 			"</testsuites> ";
 	private List<TestSuite> suites;
+	private RootTestSuite suite;
 	private MockModel model;
 	
 	@Before
 	public void setUp() {
 		model = new MockModel();
-		suites = model.getSuites(xml);
+		suite = model.getSuite(xml);
+		suites = suite.getSuites();
+	}
+	
+	@Test
+	public void testGetSuiteStats() {
+		assertEquals(8, suite.getTests());
+		assertEquals(1, suite.getErrors());
+		assertEquals(2, suite.getFailues());
 	}
 	
 	@Test
