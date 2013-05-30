@@ -3,8 +3,6 @@ package dk.rohdef.eclipse.buster.tests.views;
 import static org.junit.Assert.assertEquals;
 
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Shell;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,22 +14,16 @@ import dk.rohdef.eclipse.buster.views.StatusTexts;
 import dk.rohdef.eclipse.buster.views.providers.IStatusTextProvider;
 import dk.rohdef.eclipse.buster.views.providers.StatusTextProvider;
 
-public class ViewsTest {
-	public Shell shell;
-	public Display display;
+public class StatusTextAndProviderTest extends IGuiCase {
 
 	@Before
 	public void setUp() {
-		this.display = new Display();
-		this.shell = new Shell(this.display, SWT.SHELL_TRIM);
+		super.setUp();
 	}
 	
 	@After
 	public void tearDown() {
-		this.shell.dispose();
-		this.shell = null;
-		this.display.dispose();
-		this.display = null;
+		super.tearDown();
 	}
 	
 	@Test
@@ -47,7 +39,7 @@ public class ViewsTest {
 	
 	@Test
 	public void testStatusTexts() {
-		StatusTexts texts = new StatusTexts(this.shell, SWT.NONE);
+		StatusTexts texts = new StatusTexts(this.getShell(), SWT.NONE);
 		texts.setContentProvider(new StatusTextProvider());
 		
 		RootTestSuite suite = (new MockModel()).getSuite(MockModelTest.xml);

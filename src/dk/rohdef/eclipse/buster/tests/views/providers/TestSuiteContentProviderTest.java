@@ -1,9 +1,14 @@
 package dk.rohdef.eclipse.buster.tests.views.providers;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 import java.util.Arrays;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -13,10 +18,9 @@ import dk.rohdef.eclipse.buster.models.RootTestSuite;
 import dk.rohdef.eclipse.buster.models.TestCase;
 import dk.rohdef.eclipse.buster.models.TestSuite;
 import dk.rohdef.eclipse.buster.tests.MockModelTest;
-import dk.rohdef.eclipse.buster.views.providers.TestSuiteContentProvider;
+import dk.rohdef.eclipse.buster.tests.views.IGuiCase;
 
-public class TestSuiteContentProviderTest {
-	private TestSuiteContentProvider provider;
+public class TestSuiteContentProviderTest extends IGuiCase {
 	private MockModel model;
 	private RootTestSuite suite;
 	
@@ -49,44 +53,48 @@ public class TestSuiteContentProviderTest {
 
 	@Before
 	public void setUp() {
-		provider = new TestSuiteContentProvider();
+		super.setUp();
 		model = new MockModel();
 		suite = model.getSuite(MockModelTest.xml);
+	}
+	@After
+	public void tearDown() {
+		
 	}
 	
 	@Test
 	public void testHasChildren() {
 		RootTestSuite rootSuite = new RootTestSuite();
 		assertFalse("New root suite should not have children",
-				provider.hasChildren(rootSuite));
+				getProvider().hasChildren(rootSuite));
 		
 		TestSuite suite = new TestSuite();
 		assertFalse("New suite should not have children",
-				provider.hasChildren(suite));
+				getProvider().hasChildren(suite));
 		
 		rootSuite.getSuites().add(suite);
 		assertTrue("RootSuite have one test suite child",
-				provider.hasChildren(rootSuite));
+				getProvider().hasChildren(rootSuite));
 		assertFalse("Test suite should still not have any children",
-				provider.hasChildren(suite));
+				getProvider().hasChildren(suite));
 		
 		TestCase testCase = new TestCase();
 		assertFalse("Test case should never have children",
-				provider.hasChildren(testCase));
+				getProvider().hasChildren(testCase));
 
 		suite.getTestCases().add(testCase);
 		assertTrue("RootSuite have one test suite child",
-				provider.hasChildren(rootSuite));
+				getProvider().hasChildren(rootSuite));
 		assertTrue("Test suite have one test case child",
-				provider.hasChildren(suite));
+				getProvider().hasChildren(suite));
 		assertFalse("Test case should never have children",
-				provider.hasChildren(testCase));
+				getProvider().hasChildren(testCase));
 		 
 		testCase.setName("Foo bar is open");
 		testCase.setTime(3.1415);
 		testCase.setFailure(new Failure("Type", "Hello", "No text"));
 		assertFalse("Test case should never have children",
-				provider.hasChildren(testCase));
+				getProvider().hasChildren(testCase));
 	}
 	
 	@Test
@@ -100,8 +108,8 @@ public class TestSuiteContentProviderTest {
 		
 		// Currently there's no obvious reason to implement 
 		// this, so currently we don't.
-		assertNull(provider.getParent(suite));
-		assertNull(provider.getParent(testCase));
+		assertNull(getProvider().getParent(suite));
+		assertNull(getProvider().getParent(testCase));
 	}
 	
 	@Test
@@ -111,9 +119,9 @@ public class TestSuiteContentProviderTest {
 		TestCase testCase = new TestCase();
 		
 		Object[] emptyArray = {};
-		assertArrayEquals(emptyArray, provider.getChildren(root));
-		assertArrayEquals(emptyArray, provider.getChildren(suite));
-		assertNull(provider.getChildren(testCase));
+		assertArrayEquals(emptyArray, getProvider().getChildren(root));
+		assertArrayEquals(emptyArray, getProvider().getChildren(suite));
+		assertNull(getProvider().getChildren(testCase));
 		
 		
 		TestSuite suite1 = new TestSuite("Suite1", 0, 2, 0, 0.001);
@@ -159,12 +167,12 @@ public class TestSuiteContentProviderTest {
 		
 		assertEquals(testCase2_3,
 				this.suite.getSuites().get(1).getTestCases().get(2));
-		assertArrayEquals(suites, provider.getChildren(this.suite));
-		assertArrayEquals(cases1, provider.getChildren(
+		assertArrayEquals(suites, getProvider().getChildren(this.suite));
+		assertArrayEquals(cases1, getProvider().getChildren(
 				this.suite.getSuites().get(0)));
-		assertArrayEquals(cases2, provider.getChildren(
+		assertArrayEquals(cases2, getProvider().getChildren(
 				this.suite.getSuites().get(1)));
-		assertNull(provider.getChildren(
+		assertNull(getProvider().getChildren(
 				this.suite.getSuites().get(1).getTestCases().get(4)));
 	}
 }
