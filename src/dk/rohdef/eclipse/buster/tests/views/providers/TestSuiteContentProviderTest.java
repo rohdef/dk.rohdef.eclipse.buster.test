@@ -2,7 +2,6 @@ package dk.rohdef.eclipse.buster.tests.views.providers;
 
 import static org.junit.Assert.*;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
 import org.junit.Before;
@@ -36,16 +35,16 @@ public class TestSuiteContentProviderTest {
 			"            ";
 	private String failure2Text = "\r\n" +
 			"                ReferenceError: undefined1 is not defined\r\n" +
-            "                    at http://localhost:1111/sessions/b1f178b2-e878-4751-aa0d-62ee57c7da7b/resources/test/foo-browser.js:15:42\r\n" +
-            "                    at Object.buster.testCase.Auch an error (http://localhost:1111/sessions/b1f178b2-e878-4751-aa0d-62ee57c7da7b/resources/test/foo-browser.js:15:66)\r\n" +
-            "                    at asyncFunction (http://localhost:1111/sessions/b1f178b2-e878-4751-aa0d-62ee57c7da7b/resources/buster/bundle-0.6.js:6710:19)\r\n" +
-            "                    at callTestFn (http://localhost:1111/sessions/b1f178b2-e878-4751-aa0d-62ee57c7da7b/resources/buster/bundle-0.6.js:6816:27)\r\n" +
-            "                    at http://localhost:1111/sessions/b1f178b2-e878-4751-aa0d-62ee57c7da7b/resources/buster/bundle-0.6.js:790:27\r\n" +
-            "                    at http://localhost:1111/sessions/b1f178b2-e878-4751-aa0d-62ee57c7da7b/resources/buster/bundle-0.6.js:790:27\r\n" +
-            "                    at p.then (http://localhost:1111/sessions/b1f178b2-e878-4751-aa0d-62ee57c7da7b/resources/buster/bundle-0.6.js:71:31)\r\n" +
-            "                    at Object.then (http://localhost:1111/sessions/b1f178b2-e878-4751-aa0d-62ee57c7da7b/resources/buster/bundle-0.6.js:177:11)\r\n" +
-            "                    at Object.B.extend.runTest (http://localhost:1111/sessions/b1f178b2-e878-4751-aa0d-62ee57c7da7b/resources/buster/bundle-0.6.js:7019:26)\r\n" +
-            "                    at Object.&lt;anonymous&gt; (http://localhost:1111/sessions/b1f178b2-e878-4751-aa0d-62ee57c7da7b/resources/buster/bundle-0.6.js:6994:29)\r\n" +
+			"                    at http://localhost:1111/sessions/b1f178b2-e878-4751-aa0d-62ee57c7da7b/resources/test/foo-browser.js:15:42\r\n" +
+			"                    at Object.buster.testCase.Auch an error (http://localhost:1111/sessions/b1f178b2-e878-4751-aa0d-62ee57c7da7b/resources/test/foo-browser.js:15:66)\r\n" +
+			"                    at asyncFunction (http://localhost:1111/sessions/b1f178b2-e878-4751-aa0d-62ee57c7da7b/resources/buster/bundle-0.6.js:6710:19)\r\n" +
+			"                    at callTestFn (http://localhost:1111/sessions/b1f178b2-e878-4751-aa0d-62ee57c7da7b/resources/buster/bundle-0.6.js:6816:27)\r\n" +
+			"                    at http://localhost:1111/sessions/b1f178b2-e878-4751-aa0d-62ee57c7da7b/resources/buster/bundle-0.6.js:790:27\r\n" +
+			"                    at http://localhost:1111/sessions/b1f178b2-e878-4751-aa0d-62ee57c7da7b/resources/buster/bundle-0.6.js:790:27\r\n" +
+			"                    at p.then (http://localhost:1111/sessions/b1f178b2-e878-4751-aa0d-62ee57c7da7b/resources/buster/bundle-0.6.js:71:31)\r\n" +
+			"                    at Object.then (http://localhost:1111/sessions/b1f178b2-e878-4751-aa0d-62ee57c7da7b/resources/buster/bundle-0.6.js:177:11)\r\n" +
+			"                    at Object.B.extend.runTest (http://localhost:1111/sessions/b1f178b2-e878-4751-aa0d-62ee57c7da7b/resources/buster/bundle-0.6.js:7019:26)\r\n" +
+			"                    at Object.<anonymous> (http://localhost:1111/sessions/b1f178b2-e878-4751-aa0d-62ee57c7da7b/resources/buster/bundle-0.6.js:6994:29)\r\n" +
 			"            ";
 
 	@Before
@@ -158,6 +157,8 @@ public class TestSuiteContentProviderTest {
 		
 		TestSuite[] suites = {suite1, suite2};
 		
+		assertEquals(testCase2_3,
+				this.suite.getSuites().get(1).getTestCases().get(2));
 		assertArrayEquals(suites, provider.getChildren(this.suite));
 		assertArrayEquals(cases1, provider.getChildren(
 				this.suite.getSuites().get(0)));
