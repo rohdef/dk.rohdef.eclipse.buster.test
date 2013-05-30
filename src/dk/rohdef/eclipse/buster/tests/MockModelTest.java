@@ -153,7 +153,6 @@ public class MockModelTest {
 		assertEquals("Chrome 27.0.1453.81, Linux.Some dummy browser test", failureTest.getClassName());
 		assertEquals(0.0, failureTest.getTime(), 0.01);
 		assertNotNull(failureTest.getFailure());
-		System.out.println(failureTest.getFailure().getText());
 		
 		failureTest = suite2.getTestCases().get(3);
 		assertEquals("Chrome 27.0.1453.81, Linux.Some dummy browser test", failureTest.getClassName());
