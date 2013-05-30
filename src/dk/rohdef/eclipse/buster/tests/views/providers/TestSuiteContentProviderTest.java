@@ -158,9 +158,12 @@ public class TestSuiteContentProviderTest {
 		
 		TestSuite[] suites = {suite1, suite2};
 		
-		assertArrayEquals(suites, provider.getChildren(root));
-		assertArrayEquals(cases1, provider.getChildren(suite1));
-		assertArrayEquals(cases2, provider.getChildren(suite2));
-		assertNull(provider.getChildren(testCase2_5));
+		assertArrayEquals(suites, provider.getChildren(this.suite));
+		assertArrayEquals(cases1, provider.getChildren(
+				this.suite.getSuites().get(0)));
+		assertArrayEquals(cases2, provider.getChildren(
+				this.suite.getSuites().get(1)));
+		assertNull(provider.getChildren(
+				this.suite.getSuites().get(1).getTestCases().get(4)));
 	}
 }
