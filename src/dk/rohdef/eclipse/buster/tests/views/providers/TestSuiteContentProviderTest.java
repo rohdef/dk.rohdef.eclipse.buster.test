@@ -6,6 +6,9 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Arrays;
 
 import org.junit.After;
@@ -13,17 +16,12 @@ import org.junit.Before;
 import org.junit.Test;
 
 import dk.rohdef.eclipse.buster.models.Failure;
-import dk.rohdef.eclipse.buster.models.MockModel;
 import dk.rohdef.eclipse.buster.models.RootTestSuite;
 import dk.rohdef.eclipse.buster.models.TestCase;
 import dk.rohdef.eclipse.buster.models.TestSuite;
-import dk.rohdef.eclipse.buster.tests.MockModelTest;
 import dk.rohdef.eclipse.buster.tests.views.IGuiCase;
 
 public class TestSuiteContentProviderTest extends IGuiCase {
-	private MockModel model;
-	private RootTestSuite suite;
-	
 	private String failure1Text = "\r\n" +
 			"                Error: [assert.same] true expected to be the same object as false\r\n" +
 			"                    at Object.ba.fail (http://localhost:1111/sessions/519d7f72-26ea-4f1e-b79f-fbdf354edc37/resources/buster/bundle-0.6.js:1483:25)\r\n" +
@@ -54,12 +52,10 @@ public class TestSuiteContentProviderTest extends IGuiCase {
 	@Before
 	public void setUp() {
 		super.setUp();
-		model = new MockModel();
-		suite = model.getSuite(MockModelTest.xml);
 	}
 	@After
 	public void tearDown() {
-		
+		super.tearDown();
 	}
 	
 	@Test
@@ -166,13 +162,13 @@ public class TestSuiteContentProviderTest extends IGuiCase {
 		TestSuite[] suites = {suite1, suite2};
 		
 		assertEquals(testCase2_3,
-				this.suite.getSuites().get(1).getTestCases().get(2));
-		assertArrayEquals(suites, getProvider().getChildren(this.suite));
+				this.getRootSuite().getSuites().get(1).getTestCases().get(2));
+		assertArrayEquals(suites, getProvider().getChildren(this.getRootSuite()));
 		assertArrayEquals(cases1, getProvider().getChildren(
-				this.suite.getSuites().get(0)));
+				this.getRootSuite().getSuites().get(0)));
 		assertArrayEquals(cases2, getProvider().getChildren(
-				this.suite.getSuites().get(1)));
+				this.getRootSuite().getSuites().get(1)));
 		assertNull(getProvider().getChildren(
-				this.suite.getSuites().get(1).getTestCases().get(4)));
+				this.getRootSuite().getSuites().get(1).getTestCases().get(4)));
 	}
 }

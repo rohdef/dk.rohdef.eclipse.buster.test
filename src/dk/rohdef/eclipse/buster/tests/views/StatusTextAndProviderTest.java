@@ -7,9 +7,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import dk.rohdef.eclipse.buster.models.MockModel;
 import dk.rohdef.eclipse.buster.models.RootTestSuite;
-import dk.rohdef.eclipse.buster.tests.MockModelTest;
 import dk.rohdef.eclipse.buster.views.StatusTexts;
 import dk.rohdef.eclipse.buster.views.providers.IStatusTextProvider;
 import dk.rohdef.eclipse.buster.views.providers.StatusTextProvider;
@@ -29,7 +27,7 @@ public class StatusTextAndProviderTest extends IGuiCase {
 	@Test
 	public void testStatusTextProvider() {
 		IStatusTextProvider provider = new StatusTextProvider();
-		RootTestSuite suite = (new MockModel()).getSuite(MockModelTest.xml);
+		RootTestSuite suite = this.getRootSuite();
 		provider.inputChanged(null, null, suite);
 		
 		assertEquals("8", provider.getRuns());
@@ -42,7 +40,7 @@ public class StatusTextAndProviderTest extends IGuiCase {
 		StatusTexts texts = new StatusTexts(this.getShell(), SWT.NONE);
 		texts.setContentProvider(new StatusTextProvider());
 		
-		RootTestSuite suite = (new MockModel()).getSuite(MockModelTest.xml);
+		RootTestSuite suite = this.getRootSuite();
 		texts.setInput(suite);
 		
 		assertEquals("8", texts.getRunsText());

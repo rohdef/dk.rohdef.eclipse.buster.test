@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites>
+    <testsuite errors="0" tests="2" time="0.001" failures="0" name="Suite1">
+        <testcase time="0.011" classname="Chrome 27.0.1453.81, Linux.Some dummy browser test" name="Normal success"/>
+        <testcase time="0" classname="Chrome 27.0.1453.81, Linux.Some dummy browser test" name="Another success"/>
+    </testsuite>
+    <testsuite errors="1" tests="6" time="0" failures="2" name="Suite2">
+        <testcase time="0.269" classname="Chrome 27.0.1453.81, Linux.Some dummy browser test" name="Normal success"/>
+        <testcase time="0" classname="Chrome 27.0.1453.81, Linux.Some dummy browser test" name="Another success"/>
+        <testcase time="0" classname="Chrome 27.0.1453.81, Linux.Some dummy browser test" name="Simple failure">
+            <failure type="AssertionError" message="[expect.toBe] true expected to be the same object as false">
+                Error: [assert.same] true expected to be the same object as false
+                    at Object.ba.fail (http://localhost:1111/sessions/519d7f72-26ea-4f1e-b79f-fbdf354edc37/resources/buster/bundle-0.6.js:1483:25)
+                    at Object.fail (http://localhost:1111/sessions/519d7f72-26ea-4f1e-b79f-fbdf354edc37/resources/buster/bundle-0.6.js:1350:12)
+                    at Function.ba.(anonymous function).(anonymous function) (http://localhost:1111/sessions/519d7f72-26ea-4f1e-b79f-fbdf354edc37/resources/buster/bundle-0.6.js:1284:29)
+                    at Object.ba.expectation.(anonymous function) [as toBe] (http://localhost:1111/sessions/519d7f72-26ea-4f1e-b79f-fbdf354edc37/resources/buster/bundle-0.6.js:2036:33)
+                    at Object.buster.testCase.Simple failure (http://localhost:1111/sessions/519d7f72-26ea-4f1e-b79f-fbdf354edc37/resources/test/foo-browser.js:11:18)
+                    at asyncFunction (http://localhost:1111/sessions/519d7f72-26ea-4f1e-b79f-fbdf354edc37/resources/buster/bundle-0.6.js:6710:19)
+                    at callTestFn (http://localhost:1111/sessions/519d7f72-26ea-4f1e-b79f-fbdf354edc37/resources/buster/bundle-0.6.js:6816:27)
+                    at http://localhost:1111/sessions/519d7f72-26ea-4f1e-b79f-fbdf354edc37/resources/buster/bundle-0.6.js:790:27
+                    at http://localhost:1111/sessions/519d7f72-26ea-4f1e-b79f-fbdf354edc37/resources/buster/bundle-0.6.js:790:27
+                    at p.then (http://localhost:1111/sessions/519d7f72-26ea-4f1e-b79f-fbdf354edc37/resources/buster/bundle-0.6.js:71:31)
+            </failure>
+        </testcase>
+        <testcase time="0" classname="Chrome 27.0.1453.81, Linux.Some dummy browser test" name="Auch an error">
+            <failure type="ReferenceError" message="undefined1 is not defined">
+                ReferenceError: undefined1 is not defined
+                    at http://localhost:1111/sessions/b1f178b2-e878-4751-aa0d-62ee57c7da7b/resources/test/foo-browser.js:15:42
+                    at Object.buster.testCase.Auch an error (http://localhost:1111/sessions/b1f178b2-e878-4751-aa0d-62ee57c7da7b/resources/test/foo-browser.js:15:66)
+                    at asyncFunction (http://localhost:1111/sessions/b1f178b2-e878-4751-aa0d-62ee57c7da7b/resources/buster/bundle-0.6.js:6710:19)
+                    at callTestFn (http://localhost:1111/sessions/b1f178b2-e878-4751-aa0d-62ee57c7da7b/resources/buster/bundle-0.6.js:6816:27)
+                    at http://localhost:1111/sessions/b1f178b2-e878-4751-aa0d-62ee57c7da7b/resources/buster/bundle-0.6.js:790:27
+                    at http://localhost:1111/sessions/b1f178b2-e878-4751-aa0d-62ee57c7da7b/resources/buster/bundle-0.6.js:790:27
+                    at p.then (http://localhost:1111/sessions/b1f178b2-e878-4751-aa0d-62ee57c7da7b/resources/buster/bundle-0.6.js:71:31)
+                    at Object.then (http://localhost:1111/sessions/b1f178b2-e878-4751-aa0d-62ee57c7da7b/resources/buster/bundle-0.6.js:177:11)
+                    at Object.B.extend.runTest (http://localhost:1111/sessions/b1f178b2-e878-4751-aa0d-62ee57c7da7b/resources/buster/bundle-0.6.js:7019:26)
+                    at Object.&lt;anonymous&gt; (http://localhost:1111/sessions/b1f178b2-e878-4751-aa0d-62ee57c7da7b/resources/buster/bundle-0.6.js:6994:29)
+            </failure>
+        </testcase>
+        <testcase time="0" classname="Chrome 27.0.1453.81, Linux.Some dummy browser test" name="Async timeout">
+            <failure type="TimeoutError" message="test function timed out after 250ms"></failure>
+        </testcase>
+        <testcase time="0" classname="Chrome 27.0.1453.81, Linux.Some dummy browser test" name="Async success"/>
+    </testsuite>
+</testsuites>
