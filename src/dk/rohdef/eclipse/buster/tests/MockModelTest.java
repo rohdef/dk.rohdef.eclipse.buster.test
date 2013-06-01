@@ -1,6 +1,7 @@
 package dk.rohdef.eclipse.buster.tests;
 
 import static org.junit.Assert.*;
+import static org.hamcrest.CoreMatchers.*;
 
 import java.io.File;
 import java.util.List;

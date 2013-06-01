@@ -1,6 +1,7 @@
 package dk.rohdef.eclipse.buster.tests.views;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
+import static org.hamcrest.CoreMatchers.*;
 
 import org.eclipse.swt.SWT;
 import org.junit.After;
