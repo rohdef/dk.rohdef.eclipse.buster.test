@@ -56,5 +56,7 @@ public class TestSuiteLabelProviderTest {
 		assertThat(suiteIcon, not(equalTo(successIcon)));
 		assertThat(suiteIcon, not(equalTo(failIcon)));
 		assertThat(successIcon, not(equalTo(failIcon)));
+		
+		assertThat(labelProvider.getImage("Foo"), nullValue());
 	}
 }
