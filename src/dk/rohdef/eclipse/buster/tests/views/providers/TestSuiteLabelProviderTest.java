@@ -33,14 +33,14 @@ public class TestSuiteLabelProviderTest {
 
 	@Test
 	public void testGetTextObject() {
-		assertThat("Royal suite (3.1415 s)",
-				equalTo(labelProvider.getText(suite)));
-		assertThat("Mental case (1.013 s)",
-				equalTo(labelProvider.getText(testCase)));
+		assertThat(labelProvider.getText(suite),
+				equalTo("Royal suite (3.1415 s)"));
+		assertThat(labelProvider.getText(testCase),
+				equalTo("Mental case (1.013 s)"));
 		
 		// Perhaps some better error handling would be a good idea?
-		assertThat("Error parsin",
-				is(equalTo(labelProvider.getText("Foo"))));
+		assertThat(labelProvider.getText("Foo"),
+				is(equalTo("Error parsing")));
 	}
 
 	@Test
