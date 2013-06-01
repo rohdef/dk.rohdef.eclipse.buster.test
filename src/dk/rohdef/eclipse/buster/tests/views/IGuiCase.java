@@ -18,7 +18,7 @@ public abstract class IGuiCase {
 	
 	public void setUp() {
 		this.provider = new TestSuiteContentProvider();
-		this.display = new Display();
+		this.display = Display.getDefault();
 		this.shell = new Shell(this.display, SWT.SHELL_TRIM);
 		this.rootSuite = (new MockModel()).getSuite(new File("resources/test-result.xml"));
 	}
